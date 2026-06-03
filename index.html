@@ -1,591 +1,670 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="no-js" lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Osvaldo Ramírez Flores | Ingeniero en Sistemas</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --blue-50: #E6F1FB;
-    --blue-100: #B5D4F4;
-    --blue-200: #85B7EB;
-    --blue-400: #378ADD;
-    --blue-600: #185FA5;
-    --blue-700: #0F4A85;
-    --blue-800: #0C447C;
-    --blue-900: #042C53;
-    --gray-50: #F1EFE8;
-    --gray-100: #D3D1C7;
-    --gray-800: #444441;
-    --white: #ffffff;
-  }
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portafolio de Osvaldo Manuel Ramírez Flores, Ingeniero en Sistemas Computacionales.">
+  <meta name="author" content="Osvaldo Manuel Ramírez Flores">
+  <title>Osvaldo Ramírez Flores | Ingeniero en Sistemas Computacionales</title>
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Indie+Flower&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
 
-  html { scroll-behavior: smooth; }
+  <style>
+    /* ── RESET / BASE ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Oswald', sans-serif;
+      background: #0a1628;
+      color: #e8f0fe;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
-  body {
-    font-family: 'Space Grotesk', sans-serif;
-    background: var(--blue-900);
-    color: var(--white);
-    overflow-x: hidden;
-  }
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a1628; }
+    ::-webkit-scrollbar-thumb { background: #1a6fc4; border-radius: 3px; }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 5vw;
-    background: rgba(4, 44, 83, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(55, 138, 221, 0.2);
-  }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 1.4rem;
-    color: var(--blue-200);
-    letter-spacing: -0.03em;
-  }
-  .nav-logo span { color: var(--blue-400); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--blue-100); text-decoration: none;
-    font-size: 0.9rem; font-weight: 500;
-    letter-spacing: 0.05em; text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--white); }
+    /* ── NAV ── */
+    .menu {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.6rem 3rem;
+      background: #061022;
+      border-bottom: 2px solid #1a6fc4;
+      box-shadow: 0 2px 20px rgba(26,111,196,0.3);
+    }
+    .menu .avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: #1a6fc4;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 600; color: #fff;
+      border: 2px solid #378add; flex-shrink: 0;
+    }
+    .contenedor-menu {
+      display: flex; gap: 2rem; align-items: center;
+    }
+    .contenedor-menu a {
+      color: #85b7eb; font-size: 0.85rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 500; transition: color 0.2s;
+      padding-bottom: 3px; border-bottom: 2px solid transparent;
+    }
+    .contenedor-menu a:hover { color: #fff; border-bottom-color: #378add; }
+    .boton-arriba {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 998;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: #1a6fc4; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(26,111,196,0.5);
+      transition: background 0.2s, transform 0.2s;
+      opacity: 0;
+    }
+    .boton-arriba:hover { background: #378add; transform: translateY(-2px); }
+    .boton-arriba.visible { opacity: 1; }
 
-  /* ── HERO ── */
-  #inicio {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 7rem 5vw 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; pointer-events: none;
-  }
-  .hero-circle {
-    position: absolute; border-radius: 50%;
-    background: rgba(55, 138, 221, 0.07);
-    border: 1px solid rgba(55, 138, 221, 0.15);
-  }
-  .hero-circle.c1 { width: 500px; height: 500px; top: -100px; right: -100px; }
-  .hero-circle.c2 { width: 300px; height: 300px; bottom: 50px; left: -80px; opacity: 0.5; }
-  .hero-circle.c3 { width: 200px; height: 200px; top: 30%; right: 15%; opacity: 0.3; }
+    /* ── HEADER ── */
+    .header {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background: linear-gradient(160deg, #061022 0%, #0d2347 50%, #0a1628 100%);
+      position: relative; overflow: hidden;
+      padding: 6rem 2rem 4rem;
+    }
+    .header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 50%, rgba(26,111,196,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 30%, rgba(55,138,221,0.06) 0%, transparent 60%);
+    }
+    /* grid lines */
+    .header::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(26,111,196,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,111,196,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .contenedor-header { position: relative; z-index: 2; }
+    .nombre {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 600; letter-spacing: 0.05em;
+      color: #fff; line-height: 1.1;
+      text-shadow: 0 0 40px rgba(55,138,221,0.3);
+    }
+    .nombre span { display: inline-block; }
+    .profesion {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 300; color: #85b7eb;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin: 1rem 0 2rem;
+    }
+    .header-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 0.75rem 2rem; border-radius: 4px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem; letter-spacing: 0.12em;
+      text-transform: uppercase; font-weight: 500;
+      transition: all 0.2s; cursor: pointer;
+    }
+    .btn-blue { background: #1a6fc4; color: #fff; border: none; }
+    .btn-blue:hover { background: #378add; transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: #85b7eb; border: 1px solid #1a6fc4; }
+    .btn-ghost:hover { border-color: #378add; color: #fff; transform: translateY(-2px); }
 
-  .hero-grid-line {
-    position: absolute;
-    background: rgba(55, 138, 221, 0.06);
-  }
-  .hero-content { position: relative; z-index: 2; max-width: 750px; }
+    /* scroll indicator */
+    .scroll-indicator {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(133,183,235,0.5); font-size: 0.7rem; letter-spacing: 0.2em;
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
 
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(55, 138, 221, 0.15);
-    border: 1px solid rgba(55, 138, 221, 0.35);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 0.8rem; font-weight: 500;
-    color: var(--blue-200);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    animation: fadeInUp 0.6s ease both;
-  }
-  .badge-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--blue-400);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
+    /* ── SHARED SECTION ── */
+    section, .conocimientos { padding: 5rem 0; }
+    .contenedor { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .titulo {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600; letter-spacing: 0.08em;
+      color: #fff; text-align: center;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .titulo-linea {
+      width: 60px; height: 3px; background: #1a6fc4;
+      margin: 0.5rem auto 3rem; border-radius: 3px;
+    }
 
-  .hero-name {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--white);
-    animation: fadeInUp 0.7s 0.1s ease both;
-  }
-  .hero-name .accent { color: var(--blue-400); }
+    /* ── SOBRE MÍ ── */
+    .sobre-mi { background: #061022; }
+    .contenedor-sobre-mi { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+    .terminal {
+      background: #0d1b2e;
+      border: 1px solid rgba(26,111,196,0.3);
+      border-radius: 8px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .terminal-bar {
+      background: #1a2a3e;
+      padding: 0.6rem 1rem;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid rgba(26,111,196,0.2);
+    }
+    .terminal-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+    }
+    .terminal-dot.r { background: #ff5f57; }
+    .terminal-dot.y { background: #ffbd2e; }
+    .terminal-dot.g { background: #28ca41; }
+    .terminal-body { padding: 1.5rem; font-family: 'Courier New', monospace; }
+    .dir {
+      color: #1a6fc4; font-size: 0.9rem; margin-bottom: 1rem;
+      display: block;
+    }
+    .descripcion {
+      color: #b5d4f4; font-size: 0.95rem; line-height: 1.9;
+      white-space: pre-line;
+    }
+    .descripcion .cursor {
+      display: inline-block; width: 2px; height: 1em;
+      background: #378add; vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-  .hero-title {
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    color: var(--blue-200);
-    font-weight: 400;
-    margin: 1rem 0 1.5rem;
-    letter-spacing: 0.02em;
-    animation: fadeInUp 0.7s 0.2s ease both;
-  }
+    /* ── PROYECTOS ── */
+    .proyectos { background: #0a1628; }
+    .contenedor-proyectos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .proyecto {
+      background: #0d1e36;
+      border: 1px solid rgba(26,111,196,0.2);
+      border-radius: 8px; overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .proyecto:hover {
+      transform: translateY(-6px);
+      border-color: #1a6fc4;
+      box-shadow: 0 12px 32px rgba(26,111,196,0.2);
+    }
+    .proyecto .foto {
+      background: #1a2a3e;
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; color: rgba(26,111,196,0.3);
+      border-bottom: 1px solid rgba(26,111,196,0.15);
+      position: relative; overflow: hidden;
+    }
+    .proyecto .foto .num {
+      font-size: 6rem; font-weight: 600;
+      color: rgba(26,111,196,0.1);
+      position: absolute;
+    }
+    .proyecto .foto .icon { position: relative; z-index: 1; font-size: 3rem; color: #1a6fc4; }
+    .proyecto .info { padding: 1.5rem; }
+    .proyecto h4 {
+      font-size: 1.15rem; font-weight: 600;
+      color: #fff; margin-bottom: 0.5rem;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .proyecto p { font-size: 0.85rem; color: #85b7eb; line-height: 1.7; margin-bottom: 1rem; }
+    .proyecto h5 { font-size: 0.75rem; color: #378add; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech-tag {
+      padding: 3px 10px; border-radius: 3px;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+      border: 1px solid rgba(26,111,196,0.4);
+      color: #85b7eb; background: rgba(26,111,196,0.1);
+    }
 
-  .hero-desc {
-    font-size: 1rem;
-    color: rgba(181, 212, 244, 0.8);
-    line-height: 1.75;
-    max-width: 580px;
-    animation: fadeInUp 0.7s 0.3s ease both;
-  }
+    /* ── CONOCIMIENTOS (tarjetas expandibles) ── */
+    .conocimientos { background: #061022; }
+    .contenedor-conocimientos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .tarjeta {
+      position: relative;
+      background: #0d1e36;
+      border: 1px solid rgba(26,111,196,0.2);
+      border-radius: 8px; overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .tarjeta input[type="checkbox"] {
+      position: absolute; opacity: 0; width: 100%; height: 60px;
+      cursor: pointer; z-index: 10; top: 0; left: 0;
+    }
+    .tarjeta:has(input:checked) { border-color: #1a6fc4; }
+    .cambio {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 600; z-index: 5;
+      transition: transform 0.3s, background 0.2s;
+      pointer-events: none;
+    }
+    .cambio.blue { background: rgba(26,111,196,0.2); color: #1a6fc4; border: 1px solid #1a6fc4; }
+    .tarjeta:has(input:checked) .cambio { transform: rotate(45deg); background: #1a6fc4; color: #fff; }
+    .tarjeta .img-wrap {
+      height: 80px; display: flex; align-items: center; padding: 0 1.2rem;
+      gap: 1rem;
+    }
+    .tarjeta .img-wrap .skill-icon {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: rgba(26,111,196,0.15);
+      border: 1px solid rgba(26,111,196,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: #1a6fc4; flex-shrink: 0;
+    }
+    .tarjeta .img-wrap h3 {
+      font-size: 1rem; font-weight: 600;
+      color: #fff; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .detalles {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      padding: 0 1.2rem;
+    }
+    .tarjeta:has(input:checked) .detalles {
+      max-height: 300px;
+      padding: 0 1.2rem 1.2rem;
+    }
+    .detalles p {
+      font-size: 0.85rem; color: #85b7eb; line-height: 1.8;
+      border-top: 1px solid rgba(26,111,196,0.15);
+      padding-top: 0.75rem;
+      font-family: 'Oswald', sans-serif; font-weight: 300;
+    }
 
-  .hero-ctas {
-    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
-    animation: fadeInUp 0.7s 0.4s ease both;
-  }
-  .btn-primary {
-    background: var(--blue-400);
-    color: var(--white);
-    padding: 0.85rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600; font-size: 0.95rem;
-    transition: background 0.2s, transform 0.15s;
-    border: none; cursor: pointer;
-  }
-  .btn-primary:hover { background: var(--blue-600); transform: translateY(-2px); }
-  .btn-outline {
-    background: transparent;
-    color: var(--blue-200);
-    padding: 0.85rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600; font-size: 0.95rem;
-    border: 1.5px solid rgba(55, 138, 221, 0.4);
-    transition: border-color 0.2s, color 0.2s, transform 0.15s;
-    cursor: pointer;
-  }
-  .btn-outline:hover { border-color: var(--blue-400); color: var(--white); transform: translateY(-2px); }
+    /* ── CERTIFICADOS ── */
+    .certificados { background: #0a1628; }
+    .contenedor-certificados {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .cert-card {
+      background: #0d1e36;
+      border: 1px solid rgba(26,111,196,0.2);
+      border-radius: 8px; padding: 2rem;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .cert-card:hover {
+      transform: translateY(-4px);
+      border-color: #1a6fc4;
+      box-shadow: 0 8px 24px rgba(26,111,196,0.2);
+    }
+    .cert-card .cert-icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(26,111,196,0.15);
+      border: 2px solid rgba(26,111,196,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: #378add;
+      margin: 0 auto 1rem;
+    }
+    .cert-card h4 { font-size: 0.95rem; color: #fff; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .cert-card p { font-size: 0.8rem; color: #85b7eb; font-weight: 300; }
+    .cert-empty {
+      grid-column: 1 / -1; text-align: center;
+      padding: 3rem; color: rgba(133,183,235,0.3);
+      border: 1px dashed rgba(26,111,196,0.2); border-radius: 8px;
+      font-size: 0.9rem; font-weight: 300;
+    }
 
-  .hero-stats {
-    display: flex; gap: 2.5rem; margin-top: 3.5rem;
-    animation: fadeInUp 0.7s 0.5s ease both;
-  }
-  .stat-item { display: flex; flex-direction: column; gap: 4px; }
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2rem; font-weight: 800; color: var(--white);
-  }
-  .stat-label { font-size: 0.8rem; color: var(--blue-200); text-transform: uppercase; letter-spacing: 0.08em; }
+    /* ── FOOTER / CONTACTO ── */
+    .footer {
+      background: #061022;
+      border-top: 2px solid #1a6fc4;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .redes-sociales {
+      display: flex; justify-content: center; gap: 1.2rem;
+      margin-bottom: 1.5rem; flex-wrap: wrap;
+    }
+    .social {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      border: 1.5px solid rgba(26,111,196,0.4);
+      color: #85b7eb; background: rgba(26,111,196,0.08);
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .social:hover { background: #1a6fc4; color: #fff; border-color: #1a6fc4; transform: translateY(-3px); }
+    .footer-info {
+      display: flex; justify-content: center; gap: 2rem;
+      flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .footer-info a {
+      color: #85b7eb; font-size: 0.85rem; font-weight: 300;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .footer-info a:hover { color: #fff; }
+    .autor {
+      color: rgba(133,183,235,0.4); font-size: 0.8rem;
+      font-weight: 300; letter-spacing: 0.1em;
+    }
 
-  .hero-avatar {
-    position: absolute; right: 5vw; top: 50%; transform: translateY(-50%);
-    width: 340px; height: 340px;
-    background: rgba(24, 95, 165, 0.25);
-    border: 2px solid rgba(55, 138, 221, 0.3);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    animation: fadeInRight 0.8s 0.3s ease both;
-  }
-  .hero-avatar-inner {
-    width: 290px; height: 290px;
-    background: linear-gradient(135deg, var(--blue-800), var(--blue-700));
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 5rem; font-weight: 800;
-    color: var(--blue-200);
-    letter-spacing: -0.05em;
-  }
+    /* ── FADE IN ── */
+    .fade-in { animation: fadeIn 1s ease both; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; } }
 
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInRight {
-    from { opacity: 0; transform: translate(30px, -50%); }
-    to { opacity: 1; transform: translate(0, -50%); }
-  }
-
-  /* ── SECTIONS SHARED ── */
-  section { padding: 6rem 5vw; }
-  .section-label {
-    font-size: 0.75rem; font-weight: 600;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--blue-400); margin-bottom: 0.5rem;
-  }
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800; line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-  }
-  .section-line {
-    width: 60px; height: 4px;
-    background: var(--blue-400);
-    border-radius: 4px;
-    margin-bottom: 3rem;
-  }
-
-  /* ── PROYECTOS ── */
-  #proyectos { background: rgba(255,255,255,0.02); }
-  .proyectos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-  .project-card {
-    background: rgba(12, 68, 124, 0.25);
-    border: 1px solid rgba(55, 138, 221, 0.2);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: transform 0.2s, border-color 0.2s, background 0.2s;
-    position: relative; overflow: hidden;
-  }
-  .project-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: var(--blue-400);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s;
-  }
-  .project-card:hover { transform: translateY(-6px); border-color: rgba(55,138,221,0.5); background: rgba(12,68,124,0.4); }
-  .project-card:hover::before { transform: scaleX(1); }
-
-  .project-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 3.5rem; font-weight: 800;
-    color: rgba(55, 138, 221, 0.12);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-  .project-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem; font-weight: 700;
-    color: var(--white); margin-bottom: 0.75rem;
-  }
-  .project-desc {
-    font-size: 0.9rem; line-height: 1.7;
-    color: rgba(181, 212, 244, 0.75);
-    margin-bottom: 1.5rem;
-  }
-  .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tech-tag {
-    background: rgba(55, 138, 221, 0.15);
-    border: 1px solid rgba(55, 138, 221, 0.3);
-    color: var(--blue-200);
-    padding: 4px 12px; border-radius: 100px;
-    font-size: 0.75rem; font-weight: 500;
-    letter-spacing: 0.03em;
-  }
-
-  /* ── CERTIFICADOS ── */
-  #certificados { }
-  .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-  }
-  .cert-card {
-    background: rgba(12, 68, 124, 0.2);
-    border: 1px solid rgba(55, 138, 221, 0.18);
-    border-radius: 16px; padding: 2rem;
-    display: flex; flex-direction: column; gap: 12px;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-  .cert-card:hover { transform: translateY(-4px); border-color: rgba(55,138,221,0.45); }
-  .cert-icon {
-    width: 48px; height: 48px;
-    background: rgba(55, 138, 221, 0.15);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .cert-icon svg { width: 26px; height: 26px; fill: var(--blue-400); }
-  .cert-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 1.05rem; color: var(--white);
-  }
-  .cert-org { font-size: 0.85rem; color: var(--blue-200); }
-  .cert-badge {
-    display: inline-block;
-    background: rgba(55,138,221,0.12);
-    border: 1px solid rgba(55,138,221,0.25);
-    color: var(--blue-200);
-    padding: 3px 10px; border-radius: 100px;
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    width: fit-content;
-  }
-  .cert-empty {
-    grid-column: 1 / -1;
-    text-align: center; padding: 4rem 2rem;
-    color: rgba(181,212,244,0.4); font-size: 0.95rem;
-    border: 1px dashed rgba(55,138,221,0.2);
-    border-radius: 16px;
-  }
-
-  /* ── CONTACTO ── */
-  #contacto {
-    background: rgba(255,255,255,0.02);
-  }
-  .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem; align-items: start;
-  }
-  .contact-intro {
-    font-size: 1.05rem; line-height: 1.8;
-    color: rgba(181,212,244,0.8);
-    margin-bottom: 2rem;
-  }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 1rem;
-    background: rgba(12,68,124,0.25);
-    border: 1px solid rgba(55,138,221,0.2);
-    border-radius: 12px; padding: 1.1rem 1.5rem;
-    text-decoration: none; color: var(--white);
-    transition: border-color 0.2s, background 0.2s, transform 0.15s;
-  }
-  .contact-link:hover { border-color: rgba(55,138,221,0.5); background: rgba(12,68,124,0.45); transform: translateX(4px); }
-  .contact-link-icon {
-    width: 42px; height: 42px; border-radius: 10px;
-    background: rgba(55,138,221,0.15);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .contact-link-icon svg { width: 22px; height: 22px; fill: var(--blue-400); }
-  .contact-link-info { display: flex; flex-direction: column; gap: 2px; }
-  .contact-link-label { font-size: 0.75rem; color: var(--blue-200); text-transform: uppercase; letter-spacing: 0.08em; }
-  .contact-link-value { font-size: 0.95rem; font-weight: 500; }
-
-  .contact-card {
-    background: rgba(12,68,124,0.3);
-    border: 1px solid rgba(55,138,221,0.25);
-    border-radius: 20px; padding: 2.5rem;
-  }
-  .contact-card-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem; font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  .contact-card-sub { font-size: 0.9rem; color: var(--blue-200); margin-bottom: 1.5rem; }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center; padding: 2rem 5vw;
-    border-top: 1px solid rgba(55,138,221,0.12);
-    color: rgba(181,212,244,0.4); font-size: 0.85rem;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .hero-avatar { display: none; }
-    .contact-wrapper { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 600px) {
-    .nav-links { display: none; }
-    .hero-stats { gap: 1.5rem; }
-    .hero-stats .stat-num { font-size: 1.5rem; }
-  }
-</style>
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .menu { padding: 0.6rem 1.2rem; }
+      .contenedor-menu { gap: 1rem; }
+      .contenedor-menu a { font-size: 0.75rem; }
+    }
+    @media (max-width: 500px) {
+      .contenedor-menu { display: none; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">OR<span>.</span>F</div>
-  <ul class="nav-links">
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#certificados">Certificados</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
+<nav class="menu">
+  <div class="avatar">ORF</div>
+  <div class="contenedor-menu">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#conocimientos">Habilidades</a>
+    <a href="#certificados">Certificados</a>
+    <a href="#contacto">Contacto</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section id="inicio">
-  <div class="hero-bg">
-    <div class="hero-circle c1"></div>
-    <div class="hero-circle c2"></div>
-    <div class="hero-circle c3"></div>
-  </div>
+<!-- BOTÓN ARRIBA -->
+<div class="boton-arriba" id="boton-arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fa fa-chevron-up"></i>
+</div>
 
-  <div class="hero-content">
-    <div class="hero-badge">
-      <div class="badge-dot"></div>
-      Disponible para oportunidades
+<!-- HEADER -->
+<header class="header">
+  <div class="contenedor-header">
+    <div class="nombre fade-in">
+      Osvaldo Manuel<br>Ramírez Flores
     </div>
-
-    <h1 class="hero-name">
-      Osvaldo<br>
-      Ramírez<br>
-      <span class="accent">Flores</span>
-    </h1>
-
-    <p class="hero-title">Ingeniero en Sistemas Computacionales</p>
-
-    <p class="hero-desc">
-      Con sólida formación técnica y amplia participación en competencias de innovación tecnológica a nivel regional y nacional. Persona proactiva, comprometida y con grandes habilidades para la resolución de problemas y el desarrollo de soluciones de impacto real.
-    </p>
-
-    <div class="hero-ctas">
-      <a href="#proyectos" class="btn-primary">Ver proyectos</a>
-      <a href="#contacto" class="btn-outline">Contáctame</a>
-    </div>
-
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-num">3+</span>
-        <span class="stat-label">Proyectos</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">Reg.</span>
-        <span class="stat-label">y Nacional</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">ISC</span>
-        <span class="stat-label">Titulado</span>
-      </div>
+    <h2 class="profesion fade-in">Ingeniero en Sistemas Computacionales</h2>
+    <div class="header-ctas fade-in">
+      <a href="#proyectos" class="btn btn-blue">Ver proyectos</a>
+      <a href="#contacto" class="btn btn-ghost">Contacto</a>
     </div>
   </div>
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <i class="fa fa-chevron-down"></i>
+  </div>
+</header>
 
-  <div class="hero-avatar">
-    <div class="hero-avatar-inner">ORF</div>
+<!-- SOBRE MÍ -->
+<section class="sobre-mi" id="sobre-mi">
+  <div class="contenedor-sobre-mi">
+    <h2 class="titulo" data-aos="fade-up">Sobre mí</h2>
+    <div class="titulo-linea" data-aos="fade-up"></div>
+    <div class="terminal" data-aos="fade-up" data-aos-delay="100">
+      <div class="terminal-bar">
+        <div class="terminal-dot r"></div>
+        <div class="terminal-dot y"></div>
+        <div class="terminal-dot g"></div>
+        <span style="margin-left:0.5rem; font-size:0.75rem; color:#85b7eb; font-family:'Courier New',monospace;">osvaldo@orf:~/portafolio</span>
+      </div>
+      <div class="terminal-body">
+        <span class="dir">(base) osvaldo@orf:~/portafolio $</span>
+        <p class="descripcion" id="tagline">
+          $ <span id="typed-text"></span><span class="cursor"></span>
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- PROYECTOS -->
-<section id="proyectos">
-  <p class="section-label">Lo que he construido</p>
-  <h2 class="section-title">Proyectos</h2>
-  <div class="section-line"></div>
+<section class="proyectos" id="proyectos">
+  <div class="contenedor">
+    <h2 class="titulo" data-aos="fade-up">Proyectos realizados</h2>
+    <div class="titulo-linea" data-aos="fade-up"></div>
+    <div class="contenedor-proyectos">
 
-  <div class="proyectos-grid">
-
-    <div class="project-card">
-      <div class="project-num">01</div>
-      <h3 class="project-name">JUMP-BUMP</h3>
-      <p class="project-desc">Aplicación móvil para prevenir accidentes causados por la mala infraestructura vial. Detecta y reporta en tiempo real las condiciones del camino para alertar a conductores y autoridades.</p>
-      <div class="tech-tags">
-        <span class="tech-tag">Kotlin</span>
-        <span class="tech-tag">Android Studio</span>
-        <span class="tech-tag">Arduino</span>
-        <span class="tech-tag">IoT</span>
+      <div class="proyecto" data-aos="fade-up" data-aos-delay="0">
+        <div class="foto">
+          <span class="num">01</span>
+          <i class="icon fas fa-road"></i>
+        </div>
+        <div class="info">
+          <h4>JUMP-BUMP</h4>
+          <p>Aplicación móvil para prevenir accidentes causados por la mala infraestructura vial, con detección física mediante Arduino.</p>
+          <h5>Tecnologías utilizadas:</h5>
+          <div class="tech-list">
+            <span class="tech-tag">Kotlin</span>
+            <span class="tech-tag">Android Studio</span>
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">IoT</span>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-num">02</div>
-      <h3 class="project-name">SanLife</h3>
-      <p class="project-desc">Sistema integral de salud pública enfocado en la detección temprana de hipertensión y diabetes gestacional en mujeres embarazadas, con monitoreo preventivo de salud infantil mediante wearables e inteligencia artificial.</p>
-      <div class="tech-tags">
-        <span class="tech-tag">Dispositivos Wearables</span>
-        <span class="tech-tag">Inteligencia Artificial</span>
-        <span class="tech-tag">Móvil</span>
-        <span class="tech-tag">IoT</span>
+      <div class="proyecto" data-aos="fade-up" data-aos-delay="100">
+        <div class="foto">
+          <span class="num">02</span>
+          <i class="icon fas fa-heartbeat"></i>
+        </div>
+        <div class="info">
+          <h4>SanLife</h4>
+          <p>Sistema integral de salud pública para detección temprana de hipertensión y diabetes gestacional mediante wearables e inteligencia artificial.</p>
+          <h5>Tecnologías utilizadas:</h5>
+          <div class="tech-list">
+            <span class="tech-tag">Wearables</span>
+            <span class="tech-tag">IA</span>
+            <span class="tech-tag">Móvil</span>
+            <span class="tech-tag">IoT</span>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-num">03</div>
-      <h3 class="project-name">Gluwell</h3>
-      <p class="project-desc">Plataforma digital para el monitoreo remoto y en tiempo real de pacientes con diabetes. Integra dispositivos inteligentes, análisis en la nube con IA y Big Data, alertas automáticas de emergencia y comunicación directa entre paciente y médico.</p>
-      <div class="tech-tags">
-        <span class="tech-tag">Inteligencia Artificial</span>
-        <span class="tech-tag">Big Data</span>
-        <span class="tech-tag">Cloud</span>
-        <span class="tech-tag">Salud Digital</span>
+      <div class="proyecto" data-aos="fade-up" data-aos-delay="200">
+        <div class="foto">
+          <span class="num">03</span>
+          <i class="icon fas fa-tint"></i>
+        </div>
+        <div class="info">
+          <h4>Gluwell</h4>
+          <p>Plataforma de monitoreo remoto para pacientes con diabetes. Integra análisis en la nube con IA, Big Data y alertas automáticas de emergencia.</p>
+          <h5>Tecnologías utilizadas:</h5>
+          <div class="tech-list">
+            <span class="tech-tag">IA</span>
+            <span class="tech-tag">Big Data</span>
+            <span class="tech-tag">Cloud</span>
+            <span class="tech-tag">Salud Digital</span>
+          </div>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
+
+<!-- HABILIDADES -->
+<div class="conocimientos" id="conocimientos">
+  <div class="contenedor">
+    <h2 class="titulo" data-aos="fade-up">Habilidades tecnológicas</h2>
+    <div class="titulo-linea" data-aos="fade-up"></div>
+    <div class="contenedor-conocimientos">
+
+      <div class="tarjeta" data-aos="fade-up" data-aos-delay="0">
+        <input type="checkbox" name="">
+        <div class="cambio blue">+</div>
+        <div class="img-wrap">
+          <div class="skill-icon"><i class="fab fa-android"></i></div>
+          <h3>Android / Kotlin</h3>
+        </div>
+        <div class="detalles">
+          <p>Desarrollo de aplicaciones móviles nativas con Kotlin en Android Studio. Experiencia en arquitectura MVVM, consumo de APIs REST y uso de sensores del dispositivo.</p>
+        </div>
+      </div>
+
+      <div class="tarjeta" data-aos="fade-up" data-aos-delay="50">
+        <input type="checkbox" name="">
+        <div class="cambio blue">+</div>
+        <div class="img-wrap">
+          <div class="skill-icon"><i class="fas fa-brain"></i></div>
+          <h3>Inteligencia Artificial</h3>
+        </div>
+        <div class="detalles">
+          <p>Implementación de algoritmos de machine learning para análisis de datos de salud, detección de patrones y generación de alertas preventivas en tiempo real.</p>
+        </div>
+      </div>
+
+      <div class="tarjeta" data-aos="fade-up" data-aos-delay="100">
+        <input type="checkbox" name="">
+        <div class="cambio blue">+</div>
+        <div class="img-wrap">
+          <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Cloud & Big Data</h3>
+        </div>
+        <div class="detalles">
+          <p>Diseño e implementación de plataformas digitales integradas a la nube para almacenamiento y análisis de grandes volúmenes de datos médicos en tiempo real.</p>
+        </div>
+      </div>
+
+      <div class="tarjeta" data-aos="fade-up" data-aos-delay="150">
+        <input type="checkbox" name="">
+        <div class="cambio blue">+</div>
+        <div class="img-wrap">
+          <div class="skill-icon"><i class="fas fa-microchip"></i></div>
+          <h3>Arduino / IoT</h3>
+        </div>
+        <div class="detalles">
+          <p>Desarrollo de sistemas embebidos con Arduino para detección de condiciones físicas en campo, integrados con aplicaciones móviles vía Bluetooth y WiFi.</p>
+        </div>
+      </div>
+
+      <div class="tarjeta" data-aos="fade-up" data-aos-delay="200">
+        <input type="checkbox" name="">
+        <div class="cambio blue">+</div>
+        <div class="img-wrap">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <h3>Bases de Datos</h3>
+        </div>
+        <div class="detalles">
+          <p>Diseño y gestión de bases de datos relacionales y no relacionales para sistemas de monitoreo en salud, con integración a servicios cloud y APIs REST.</p>
+        </div>
+      </div>
+
+      <div class="tarjeta" data-aos="fade-up" data-aos-delay="250">
+        <input type="checkbox" name="">
+        <div class="cambio blue">+</div>
+        <div class="img-wrap">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <h3>Desarrollo de Software</h3>
+        </div>
+        <div class="detalles">
+          <p>Sólida base en diseño de sistemas, estructuras de datos, programación orientada a objetos y desarrollo de soluciones tecnológicas de alto impacto social.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- CERTIFICADOS -->
-<section id="certificados">
-  <p class="section-label">Formación y reconocimientos</p>
-  <h2 class="section-title">Certificados</h2>
-  <div class="section-line"></div>
-
-  <div class="cert-grid">
-    <div class="cert-empty">
-      <p style="font-size:2rem; margin-bottom:0.75rem; opacity:0.3;">🎓</p>
-      <p>Próximamente se agregarán los certificados obtenidos.</p>
-      <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.6;">Puedes editar el HTML para añadirlos cuando los tengas.</p>
+<section class="certificados" id="certificados">
+  <div class="contenedor">
+    <h2 class="titulo" data-aos="fade-up">Certificados obtenidos</h2>
+    <div class="titulo-linea" data-aos="fade-up"></div>
+    <div class="contenedor-certificados" data-aos="fade-up">
+      <div class="cert-empty">
+        <i class="fas fa-award" style="font-size:2.5rem; display:block; margin-bottom:1rem; color:rgba(26,111,196,0.3)"></i>
+        Los certificados se mostrarán aquí próximamente.<br>
+        <span style="font-size:0.78rem; opacity:0.6;">Edita esta sección para añadirlos cuando los tengas disponibles.</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACTO -->
-<section id="contacto">
-  <p class="section-label">¿Hablamos?</p>
-  <h2 class="section-title">Contacto</h2>
-  <div class="section-line"></div>
-
-  <div class="contact-wrapper">
-    <div>
-      <p class="contact-intro">
-        Estoy en búsqueda de una oportunidad profesional para aplicar y expandir mis conocimientos. Si tienes un proyecto interesante o una vacante que consideres relevante para mi perfil, no dudes en escribirme.
-      </p>
-      <div class="contact-links">
-
-        <a href="mailto:Osvaldoramirezflores098@gmail.com" class="contact-link">
-          <div class="contact-link-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </div>
-          <div class="contact-link-info">
-            <span class="contact-link-label">Email</span>
-            <span class="contact-link-value">Osvaldoramirezflores098@gmail.com</span>
-          </div>
-        </a>
-
-        <a href="https://www.linkedin.com/in/osvaldo-ramírez-flores-b51b33211" target="_blank" class="contact-link">
-          <div class="contact-link-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H6.477v-7H9v7zM7.694 8.717c-.771 0-1.286-.514-1.286-1.2s.514-1.2 1.371-1.2c.771 0 1.286.514 1.286 1.2s-.514 1.2-1.371 1.2zM18 17h-2.442v-3.826c0-1.058-.651-1.302-.895-1.302s-1.058.163-1.058 1.302V17h-2.523v-7h2.523v.977c.325-.57.976-.977 2.197-.977C17.023 10 18 10.977 18 13.174V17z"/></svg>
-          </div>
-          <div class="contact-link-info">
-            <span class="contact-link-label">LinkedIn</span>
-            <span class="contact-link-value">Osvaldo Ramírez Flores</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/OsvaldoRF098" target="_blank" class="contact-link">
-          <div class="contact-link-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-          </div>
-          <div class="contact-link-info">
-            <span class="contact-link-label">GitHub</span>
-            <span class="contact-link-value">OsvaldoRF098</span>
-          </div>
-        </a>
-
-      </div>
+<!-- FOOTER / CONTACTO -->
+<footer class="footer" id="contacto">
+  <div class="contenedor">
+    <div class="footer-info" data-aos="fade-up">
+      <a href="mailto:Osvaldoramirezflores098@gmail.com">
+        <i class="fas fa-envelope"></i> Osvaldoramirezflores098@gmail.com
+      </a>
+      <a href="tel:4331134113">
+        <i class="fas fa-phone"></i> 433-113-4113
+      </a>
     </div>
-
-    <div class="contact-card">
-      <h3 class="contact-card-title">¡Conectemos!</h3>
-      <p class="contact-card-sub">Envíame un mensaje directo</p>
-
-      <div style="display:flex; flex-direction:column; gap:1rem;">
-        <div>
-          <label style="display:block; font-size:0.8rem; color:var(--blue-200); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.08em;">Nombre</label>
-          <input type="text" placeholder="Tu nombre" style="width:100%; background:rgba(55,138,221,0.08); border:1px solid rgba(55,138,221,0.25); border-radius:8px; padding:0.75rem 1rem; color:var(--white); font-size:0.95rem; font-family:inherit; outline:none;">
-        </div>
-        <div>
-          <label style="display:block; font-size:0.8rem; color:var(--blue-200); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.08em;">Correo</label>
-          <input type="email" placeholder="tu@correo.com" style="width:100%; background:rgba(55,138,221,0.08); border:1px solid rgba(55,138,221,0.25); border-radius:8px; padding:0.75rem 1rem; color:var(--white); font-size:0.95rem; font-family:inherit; outline:none;">
-        </div>
-        <div>
-          <label style="display:block; font-size:0.8rem; color:var(--blue-200); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.08em;">Mensaje</label>
-          <textarea rows="4" placeholder="Cuéntame sobre tu proyecto u oportunidad..." style="width:100%; background:rgba(55,138,221,0.08); border:1px solid rgba(55,138,221,0.25); border-radius:8px; padding:0.75rem 1rem; color:var(--white); font-size:0.95rem; font-family:inherit; outline:none; resize:vertical;"></textarea>
-        </div>
-        <a href="mailto:Osvaldoramirezflores098@gmail.com" class="btn-primary" style="text-align:center; display:block;">Enviar mensaje</a>
-      </div>
+    <div class="redes-sociales" data-aos="fade-up">
+      <a href="https://www.linkedin.com/in/osvaldo-ramírez-flores-b51b33211" target="_blank" class="social" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/OsvaldoRF098" target="_blank" class="social" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:Osvaldoramirezflores098@gmail.com" class="social" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="tel:4331134113" class="social" title="Teléfono">
+        <i class="fas fa-phone"></i>
+      </a>
     </div>
-
+    <p class="autor">Osvaldo Manuel Ramírez Flores — Ingeniero en Sistemas Computacionales</p>
   </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 Osvaldo Manuel Ramírez Flores &nbsp;·&nbsp; Ingeniero en Sistemas Computacionales &nbsp;·&nbsp; Zacatecas, México</p>
 </footer>
 
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, once: true, offset: 60 });
+
+  /* botón arriba */
+  const btn = document.getElementById('boton-arriba');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  /* efecto de escritura en terminal */
+  const text = `Bienvenido a mi portafolio.
+
+Soy Osvaldo Ramírez Flores, Ingeniero en Sistemas Computacionales con formación técnica sólida y amplia participación en competencias de innovación tecnológica a nivel regional y nacional.
+
+Me apasiona desarrollar soluciones tecnológicas con impacto real, especialmente en el área de salud digital e IoT. Soy una persona proactiva, comunicativa y con grandes habilidades para el trabajo en equipo y la resolución de problemas.
+
+Actualmente en búsqueda de oportunidades profesionales para aplicar y expandir mis conocimientos.`;
+
+  let i = 0;
+  const el = document.getElementById('typed-text');
+  function type() {
+    if (i < text.length) {
+      el.textContent += text[i++];
+      setTimeout(type, i < 3 ? 60 : 18);
+    }
+  }
+  /* empieza a escribir cuando la sección es visible */
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { type(); observer.disconnect(); }
+  }, { threshold: 0.3 });
+  observer.observe(document.getElementById('sobre-mi'));
+</script>
 </body>
 </html>
