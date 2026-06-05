@@ -28,3 +28,36 @@ Actualmente en búsqueda de oportunidades profesionales para aplicar y expandir 
     if (entries[0].isIntersecting) { type(); observer.disconnect(); }
   }, { threshold: 0.3 });
   observer.observe(document.getElementById('sobre-mi'));
+
+  /* modal de certificados */
+  const certModal = document.getElementById('certModal');
+  const certModalFrame = document.getElementById('certModalFrame');
+  const certModalClose = document.getElementById('certModalClose');
+
+  function closeCertModal() {
+    certModal.classList.remove('open');
+    certModalFrame.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.cert-link').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const pdfUrl = link.getAttribute('href');
+      certModalFrame.src = pdfUrl;
+      certModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  certModalClose.addEventListener('click', closeCertModal);
+  certModal.addEventListener('click', event => {
+    if (event.target === certModal) {
+      closeCertModal();
+    }
+  });
+  window.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && certModal.classList.contains('open')) {
+      closeCertModal();
+    }
+  });
