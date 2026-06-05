@@ -235,71 +235,54 @@
     <div class="titulo-linea" data-aos="fade-up"></div>
     <div class="contenedor-certificados" data-aos="fade-up">
 
-      <div class="cert-card" data-pdf="img/certificados/CCNA-_Enterprise_Networking-_Security-_and_Automation_certificate_osvaldoramirezflores098-gmail-com_00f2d6c2-3611-4f51-9f1c-c8f7b8c6bba5.pdf" data-title="CCNAv7: Enterprise Networking, Security, and Automation">
+      <div class="cert-card">
         <i class="fas fa-award cert-icon"></i>
         <div class="cert-info">
           <span class="cert-emisor">Cisco Networking Academy</span>
           <h4 class="cert-nombre">CCNAv7: Enterprise Networking, Security, and Automation</h4>
           <span class="cert-fecha">27 Jun 2024</span>
         </div>
-        <i class="fas fa-search-plus cert-ver-icon"></i>
       </div>
 
-      <div class="cert-card" data-pdf="img/certificados/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate_osvaldoramirezflores098-gmail-com_1bba6b35-1900-4caf-936e-5375869c1ff2.pdf" data-title="CCNAv7: Switching, Routing, and Wireless Essentials">
+      <div class="cert-card">
         <i class="fas fa-award cert-icon"></i>
         <div class="cert-info">
           <span class="cert-emisor">Cisco Networking Academy</span>
           <h4 class="cert-nombre">CCNAv7: Switching, Routing, and Wireless Essentials</h4>
           <span class="cert-fecha">30 Ene 2024</span>
         </div>
-        <i class="fas fa-search-plus cert-ver-icon"></i>
       </div>
 
-      <div class="cert-card" data-pdf="img/certificados/CCNA-_Introduction_to_Networks_certificate_osvaldoramirezflores098-gmail-com_92931afb-e12e-480b-a77d-6ecedbc07133.pdf" data-title="CCNAv7: Introduction to Networks">
+      <div class="cert-card">
         <i class="fas fa-award cert-icon"></i>
         <div class="cert-info">
           <span class="cert-emisor">Cisco Networking Academy</span>
           <h4 class="cert-nombre">CCNAv7: Introduction to Networks</h4>
           <span class="cert-fecha">24 Jul 2023</span>
         </div>
-        <i class="fas fa-search-plus cert-ver-icon"></i>
       </div>
 
-      <div class="cert-card" data-pdf="img/certificados/IT_Essentials_certificate_osvaldoramirezflores098-gmail-com_98e40c15-151a-45ab-a866-dc45f97f85a1.pdf" data-title="IT Essentials: PC Hardware and Software">
+      <div class="cert-card">
         <i class="fas fa-award cert-icon"></i>
         <div class="cert-info">
           <span class="cert-emisor">Cisco Networking Academy</span>
           <h4 class="cert-nombre">IT Essentials: PC Hardware and Software</h4>
           <span class="cert-fecha">26 Ene 2023</span>
         </div>
-        <i class="fas fa-search-plus cert-ver-icon"></i>
       </div>
 
-      <div class="cert-card" data-pdf="img/certificados/Partner-_NDG_Linux_Essentials_certificate_osvaldoramirezflores098-gmail-com_6ee4dc62-cf57-4d17-be37-c264388362d4.pdf" data-title="Partner: NDG Linux Essentials">
+      <div class="cert-card">
         <i class="fas fa-award cert-icon"></i>
         <div class="cert-info">
           <span class="cert-emisor">Cisco Networking Academy</span>
           <h4 class="cert-nombre">Partner: NDG Linux Essentials</h4>
           <span class="cert-fecha">27 Jun 2024</span>
         </div>
-        <i class="fas fa-search-plus cert-ver-icon"></i>
       </div>
 
     </div>
   </div>
 </section>
-
-<!-- MODAL CERTIFICADO -->
-<div id="cert-modal" class="cert-modal">
-  <div class="cert-modal-fondo"></div>
-  <div class="cert-modal-caja">
-    <div class="cert-modal-cabecera">
-      <span id="cert-modal-titulo"></span>
-      <button class="cert-modal-cerrar" id="cert-modal-cerrar"><i class="fas fa-times"></i></button>
-    </div>
-    <iframe id="cert-modal-iframe" src="" title="Certificado"></iframe>
-  </div>
-</div>
 
 <!-- FOOTER / CONTACTO -->
 <footer class="footer" id="contacto">
@@ -326,30 +309,5 @@
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="js/main.js"></script>
-<script>
-  // Certificados: abrir modal al hacer clic
-  document.querySelectorAll('.cert-card').forEach(function(card) {
-    card.addEventListener('click', function() {
-      var pdf   = card.getAttribute('data-pdf');
-      var title = card.getAttribute('data-title');
-      document.getElementById('cert-modal-titulo').textContent = title;
-      document.getElementById('cert-modal-iframe').src = pdf;
-      document.getElementById('cert-modal').classList.add('abierto');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function cerrarModal() {
-    document.getElementById('cert-modal').classList.remove('abierto');
-    document.body.style.overflow = '';
-    setTimeout(function() { document.getElementById('cert-modal-iframe').src = ''; }, 300);
-  }
-
-  document.getElementById('cert-modal-cerrar').addEventListener('click', cerrarModal);
-  document.querySelector('.cert-modal-fondo').addEventListener('click', cerrarModal);
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') cerrarModal();
-  });
-</script>
 </body>
 </html>
